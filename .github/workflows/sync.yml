@@ -2,7 +2,7 @@ name: Sync to Hugging Face Spaces
 
 on:
   push:
-    branches: [ main ] # Change to master if your branch is named master
+    branches: [ main ]
 
 jobs:
   sync:
@@ -21,6 +21,7 @@ jobs:
 
       - name: Add HF to Known Hosts
         run: |
+          mkdir -p ~/.ssh
           ssh-keyscan -t ed25519 huggingface.co >> ~/.ssh/known_hosts
 
       - name: Push to Hugging Face
