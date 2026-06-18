@@ -112,8 +112,30 @@ async def health_check():
     return await db_manager.health_check()
 
 async def get_db_session() -> AsyncGenerator[AsyncSession, None]:
+    """
+    Dependency for FastAPI routes.
+    Automatically commits on success, rolls back on error, closes session.
+    """
     async for session in db_manager.get_session():
-        yield session
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()
+
+async def get_raw_session() -> AsyncGenerator[AsyncSession, None]:
+    """
+    Raw session without auto-commit/rollback.
+    Use when you need manual control.
+    """
+    async for session in db_manager.get_session():
+        try:
+            yield session
+        finally:
+            await session.close()
 
 if __name__ == "__main__":
     asyncio.run(health_check())

@@ -1,4 +1,10 @@
 psycopg2-binary
-python-dotenvd
+python-dotenv
 sqlalchemy
 asyncpg
+fastapi
+uvicorn
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==3.2.2
+pydantic[email]==2.8.2
