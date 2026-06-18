@@ -104,8 +104,8 @@ Dispatched → Delivered
 
 ### Prerequisites
 
-* Python 3.11+
-* PostgreSQL / Supabase account
+* Python 3.12+
+* PostgreSQL
 * Git
 
 ---
@@ -113,8 +113,8 @@ Dispatched → Delivered
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/optiflow-ai.git
-cd optiflow-ai
+git clone https://github.com/acrobyte007/OptiFlow-AI
+cd OptiFlow-AI
 ```
 
 ---
@@ -147,13 +147,6 @@ ADMIN_SECRET_KEY=your-admin-secret-key
 BACKEND_URL=https://your-backend-url.hf.space
 ```
 
-#### Database Setup
-
-```bash
-python -m app.migrate
-python -m app.fix_enum
-```
-
 #### Run Backend
 
 ```bash
@@ -173,7 +166,7 @@ pip install -r requirements-frontend.txt
 #### Run Frontend
 
 ```bash
-streamlit run app_frontend.py
+streamlit run app.py
 ```
 
 Frontend: <http://localhost:8501>
@@ -325,27 +318,13 @@ Core Tables:
 
 ---
 
-## 🤝 Contributors
-
-* Your Name
-
----
-
-## 📄 License
-
-Educational / Demo Project
-
----
-
 ## 🔗 Links
 
-* Backend: <https://ajoy0071998-optiflow-ai.hf.space>
-* Frontend: <https://your-frontend-space.hf.space>
-* GitHub: <https://github.com/your-username/optiflow-ai>
+* Backend: <https://ajoy0071998-optiflow.hf.space>
+* Frontend: <https://ajoy0071998-optiflow-frontend.hf.space>
 
 ---
 
 ## 🙏 Acknowledgments
 
-* Eluno Eyewear
 * Hugging Face Spaces
