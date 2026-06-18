@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 
 # API Configuration
-API_BASE_URL = "https://ajoy0071998-optiflow-ai.hf.space/"
+API_BASE_URL = "https://ajoy0071998-optiflow.hf.space"
 
 # Page Configuration
 st.set_page_config(
