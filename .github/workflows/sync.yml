@@ -2,29 +2,22 @@ name: Sync to Hugging Face Spaces
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ] # Change to master if your default GitHub branch is master
+
+  # Allows you to trigger the sync manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  sync:
+  sync-to-hub:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          lfs: true
 
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.PRIVATE_KEY }}
-          known_hosts: unnecessary # Tells the action we will fetch host keys manually next
-
-      - name: Add HF to Known Hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -t ed25519 huggingface.co >> ~/.ssh/known_hosts
-
-      - name: Push to Hugging Face
-        run: |
-          git remote add hf git@huggingface.co:spaces/ajoy0071998/optiflow
-          git push -f hf main
+      - name: Push to Hugging Face Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: git push --force https://ajoy0071998:$HF_TOKEN@huggingface.co/spaces/ajoy0071998/optiflow main
